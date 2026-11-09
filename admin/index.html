@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>ORBAL Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Mulish:wght@400;600;700&display=swap">
+<style>
+:root{--ivory:#f8f2e8;--silk:#efe4d2;--white:#fffcf7;--ink:#2a1a17;--muted:#6f5d55;--ruby:#7d1628;--ruby-deep:#5a0f1c;--emerald:#1e4d3b;--gold:#b08a45;--line:rgba(42,26,23,.14);--ok:#1e6b45;--warn:#9a5b00}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--ivory);color:var(--ink);font-family:"Mulish","Segoe UI",system-ui,sans-serif;font-size:15px;line-height:1.5}
+h1,h2,h3{font-family:"Marcellus",Georgia,serif;font-weight:400;margin:0}
+a{color:var(--ruby)}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 18px;border-radius:999px;border:1.5px solid var(--ruby);background:var(--ruby);color:#fff;font-weight:700;font-size:14px;cursor:pointer;text-decoration:none}
+.btn:hover{background:var(--ruby-deep)}
+.btn.line{background:transparent;color:var(--ruby)}
+.btn.line:hover{background:var(--ruby);color:#fff}
+.btn.small{padding:7px 12px;font-size:13px}
+.btn.danger{background:#fff;color:#a12020;border-color:#e0b4b4}
+.btn:disabled{opacity:.6;cursor:wait}
+input[type=text],input[type=email],input[type=password],input[type=number],select,textarea{width:100%;background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:10px 12px;min-width:0}
+textarea{min-height:90px;resize:vertical}
+label{display:grid;gap:4px;font-size:13px;font-weight:700;color:var(--muted)}
+.check{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--ink)}
+
+/* Login */
+.login{min-height:100vh;display:grid;place-items:center;padding:20px}
+.login form{background:var(--white);border:1px solid var(--line);border-radius:20px;padding:36px;width:min(420px, 100%);display:grid;gap:14px}
+.login h1{font-size:30px}
+.msg{font-size:14px;border-radius:10px;padding:10px 12px}
+.msg.err{background:#fbe9ea;color:var(--ruby-deep)}
+.msg.ok{background:#e6f3ec;color:var(--ok)}
+
+/* App */
+header{background:var(--ink);color:#f1e6d6}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px;flex-wrap:wrap}
+header h1{font-size:22px;letter-spacing:.06em}
+header h1 span{color:var(--gold)}
+header .who{font-size:13px;color:#cbb9a8;display:flex;gap:12px;align-items:center}
+header .who a{color:#f1e6d6}
+nav.tabs{background:var(--white);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+nav.tabs .wrap{display:flex;gap:4px;overflow-x:auto}
+nav.tabs button{border:0;background:none;padding:14px 16px;font-weight:700;color:var(--muted);border-bottom:3px solid transparent;cursor:pointer;white-space:nowrap}
+nav.tabs button[aria-selected="true"]{color:var(--ruby);border-bottom-color:var(--ruby)}
+main{padding-block:26px 60px}
+.bar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+.bar h2{font-size:28px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:22px}
+.stat{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.stat b{display:block;font-family:"Marcellus",serif;font-size:26px;font-weight:400;font-variant-numeric:tabular-nums}
+.stat span{font-size:13px;color:var(--muted)}
+.list{display:grid;gap:10px}
+.prow{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:12px;display:grid;grid-template-columns:64px 1fr 120px 100px auto;gap:14px;align-items:center}
+.prow img{width:64px;height:64px;object-fit:cover;border-radius:10px;background:var(--silk)}
+.prow b{display:block}
+.prow small{color:var(--muted)}
+.pill{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 9px;border-radius:999px;background:var(--silk);color:var(--ink)}
+.pill.ok{background:#e6f3ec;color:var(--ok)}
+.pill.warn{background:#fff1dc;color:var(--warn)}
+.pill.bad{background:#fbe9ea;color:var(--ruby-deep)}
+.pill.off{background:#eee;color:#666}
+.num{font-variant-numeric:tabular-nums}
+.panel{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:22px;display:grid;gap:14px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.imgs{display:flex;gap:10px;flex-wrap:wrap}
+.imgs figure{margin:0;width:110px;display:grid;gap:4px}
+.imgs img{width:110px;height:110px;object-fit:cover;border-radius:10px;border:1px solid var(--line)}
+.imgs figure div{display:flex;gap:4px}
+.imgs button{flex:1;border:1px solid var(--line);background:#fff;border-radius:8px;font-size:12px;padding:4px;cursor:pointer}
+.order{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:18px;display:grid;gap:12px}
+.order-head{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center}
+.order-head b{font-size:17px}
+.order-cols{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:16px}
+.order-cols h3{font-size:16px;margin-bottom:4px}
+.order-cols p,.order-cols li{margin:0;font-size:14px}
+.order-cols ul{margin:0;padding-left:18px}
+.order-actions{display:grid;grid-template-columns:160px 1fr auto;gap:10px;align-items:end}
+table{width:100%;border-collapse:collapse;background:var(--white);border-radius:14px;overflow:hidden}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);font-size:14px;white-space:nowrap}
+th{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);background:var(--silk)}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px}
+.empty{background:var(--white);border:1px dashed var(--line);border-radius:14px;padding:30px;text-align:center;color:var(--muted)}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom, 0px));transform:translateX(-50%);background:var(--ink);color:#fff;padding:12px 18px;border-radius:12px;z-index:50;font-size:14px;max-width:92vw}
+@media (max-width: 860px){
+  .stats{grid-template-columns:1fr 1fr}
+  .prow{grid-template-columns:56px 1fr;}
+  .prow .num,.prow .pcol{grid-column:2}
+  .order-cols{grid-template-columns:1fr}
+  .order-actions{grid-template-columns:1fr}
+  .grid2,.grid3{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- Login -->
+<section class="login" id="login-view" hidden>
+  <form id="login-form" novalidate>
+    <h1>ORBAL Admin</h1>
+    <p style="margin:0;color:var(--muted)">Sign in to manage your shop.</p>
+    <label for="login-email">Email<input id="login-email" type="email" autocomplete="username" required></label>
+    <label for="login-pass">Password<input id="login-pass" type="password" autocomplete="current-password" required></label>
+    <div class="msg err" id="login-err" hidden role="alert"></div>
+    <button class="btn" type="submit" id="login-btn">Sign in</button>
+    <a href="../" style="font-size:14px;text-align:center">← Back to the shop</a>
+  </form>
+</section>
+
+<!-- Not configured -->
+<section class="login" id="setup-view" hidden>
+  <div class="panel" style="max-width:480px">
+    <h1>Almost ready</h1>
+    <p>The shop database isn’t connected yet. Add the Supabase URL and anon key in <b>config.js</b>.</p>
+  </div>
+</section>
+
+<!-- App -->
+<div id="app-view" hidden>
+  <header><div class="wrap"><h1>ORBAL <span>Admin</span></h1><div class="who"><span id="who"></span><a href="../" target="_blank" rel="noopener">View shop ↗</a><button class="btn small line" id="logout" type="button" style="color:#f1e6d6;border-color:#f1e6d6">Sign out</button></div></div></header>
+  <nav class="tabs" aria-label="Admin sections"><div class="wrap" role="tablist">
+    <button role="tab" aria-selected="true" data-tab="orders">Orders</button>
+    <button role="tab" aria-selected="false" data-tab="products">Products</button>
+    <button role="tab" aria-selected="false" data-tab="customers">Customers</button>
+    <button role="tab" aria-selected="false" data-tab="settings">Shipping &amp; settings</button>
+  </div></nav>
+  <main class="wrap">
+
+    <section data-panel="orders">
+      <div class="stats" id="order-stats"></div>
+      <div class="bar"><h2>Orders</h2>
+        <label style="flex-direction:row;display:flex;align-items:center;gap:8px">Show
+          <select id="order-filter" style="width:auto"><option value="paid">To ship</option><option value="all">All orders</option><option value="shipped">Shipped</option><option value="cancelled">Cancelled / refunded</option></select>
+        </label>
+      </div>
+      <div class="list" id="orders"></div>
+    </section>
+
+    <section data-panel="products" hidden>
+      <div class="bar"><h2>Products</h2><button class="btn" type="button" id="new-product">+ Add product</button></div>
+      <div class="panel" id="product-form-wrap" hidden>
+        <form id="product-form" novalidate style="display:grid;gap:14px">
+          <h3 id="pf-title" style="font-size:22px">Add product</h3>
+          <label for="pf-name">Name<input id="pf-name" type="text" maxlength="120" required></label>
+          <label for="pf-desc">Description<textarea id="pf-desc" maxlength="1000"></textarea></label>
+          <div class="grid3">
+            <label for="pf-cat">Category<select id="pf-cat"><option value="necklace">Necklace</option><option value="set">Set</option><option value="bracelet">Cuff / bracelet</option><option value="earring">Earrings</option><option value="hand">Hand chain</option><option value="ring">Ring</option><option value="other">Other</option></select></label>
+            <label for="pf-price">Price (USD)<input id="pf-price" type="number" min="0.5" step="0.01" placeholder="e.g. 45.00"></label>
+            <label for="pf-stock">How many in stock<input id="pf-stock" type="number" min="0" step="1" value="1"></label>
+          </div>
+          <div class="grid2">
+            <label for="pf-sort">Position on the page (smaller = first)<input id="pf-sort" type="number" step="1" value="100"></label>
+            <div style="display:grid;align-content:end"><label class="check"><input id="pf-active" type="checkbox" checked> Show on the website</label></div>
+          </div>
+          <div style="display:grid;gap:8px">
+            <span style="font-size:13px;font-weight:700;color:var(--muted)">Photos (the first one is the main photo)</span>
+            <div class="imgs" id="pf-imgs"></div>
+            <label for="pf-upload" class="btn line small" style="justify-self:start;display:inline-flex;cursor:pointer">+ Upload photos<input id="pf-upload" type="file" accept="image/*" multiple hidden></label>
+          </div>
+          <div class="msg err" id="pf-err" hidden role="alert"></div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:space-between">
+            <div style="display:flex;gap:10px"><button class="btn" type="submit" id="pf-save">Save product</button><button class="btn line" type="button" id="pf-cancel">Cancel</button></div>
+            <button class="btn danger" type="button" id="pf-delete" hidden>Delete product</button>
+          </div>
+        </form>
+      </div>
+      <div class="list" id="products" style="margin-top:14px"></div>
+    </section>
+
+    <section data-panel="customers" hidden>
+      <div class="bar"><h2>Customers</h2><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn line" type="button" id="copy-emails">Copy emails (newsletter OK)</button><button class="btn" type="button" id="export-csv">Download CSV</button></div></div>
+      <div class="table-wrap"><table><thead><tr><th>Name</th><th>Email</th><th>Phone</th><th>Orders</th><th>Spent</th><th>Last order</th><th>Newsletter</th></tr></thead><tbody id="customers"></tbody></table></div>
+    </section>
+
+    <section data-panel="settings" hidden>
+      <div class="bar"><h2>Shipping &amp; settings</h2></div>
+      <form class="panel" id="settings-form" novalidate style="max-width:640px">
+        <div class="grid2">
+          <label for="st-us">Shipping inside the USA ($)<input id="st-us" type="number" min="0" step="0.01"></label>
+          <label for="st-world">Shipping outside the USA ($)<input id="st-world" type="number" min="0" step="0.01"></label>
+        </div>
+        <label for="st-free">Free shipping on orders over ($) <small style="font-weight:400">Leave empty for no free shipping</small><input id="st-free" type="number" min="0" step="0.01"></label>
+        <label class="check"><input id="st-open" type="checkbox"> Shop is open (uncheck to pause all orders)</label>
+        <div class="msg ok" id="st-ok" hidden>Saved.</div>
+        <div class="msg err" id="st-err" hidden role="alert"></div>
+        <button class="btn" type="submit" style="justify-self:start">Save settings</button>
+      </form>
+    </section>
+  </main>
+</div>
+
+<div class="toast" id="toast" hidden role="status"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.4/dist/umd/supabase.min.js"></script>
+<script src="../config.js"></script>
+<script>
+(function () {
+  var cfg = window.ORBAL_CONFIG || {};
+  function $(id) { return document.getElementById(id); }
+  function esc(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
+  function money(c, cur) { return new Intl.NumberFormat("en-US", { style: "currency", currency: (cur || "usd").toUpperCase() }).format((c || 0) / 100); }
+  function toCents(v) { if (v === "" || v == null) return null; var n = Math.round(parseFloat(v) * 100); return isNaN(n) ? null : n; }
+  function toDollars(c) { return c == null ? "" : (c / 100).toFixed(2); }
+  function date(s) { return s ? new Date(s).toLocaleString(undefined, { month: "short", day: "numeric", year: "numeric", hour: "numeric", minute: "2-digit" }) : ""; }
+  var toastT; function toast(t) { var el = $("toast"); el.textContent = t; el.hidden = false; clearTimeout(toastT); toastT = setTimeout(function () { el.hidden = true; }, 2600); }
+  function show(view) { ["login-view", "setup-view", "app-view"].forEach(function (v) { $(v).hidden = v !== view; }); }
+
+  if (!cfg.supabaseUrl || !cfg.supabaseAnonKey || !window.supabase) { show("setup-view"); return; }
+  var sb = window.supabase.createClient(cfg.supabaseUrl, cfg.supabaseAnonKey);
+
+  /* ---------- Auth ---------- */
+  $("login-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var err = $("login-err"); err.hidden = true;
+    var email = $("login-email").value.trim(), pass = $("login-pass").value;
+    if (!email || !pass) { err.textContent = "Enter your email and password."; err.hidden = false; return; }
+    $("login-btn").disabled = true;
+    sb.auth.signInWithPassword({ email: email, password: pass }).then(function (r) {
+      $("login-btn").disabled = false;
+      if (r.error) { err.textContent = "Email or password is not correct."; err.hidden = false; return; }
+      start(r.data.user);
+    });
+  });
+  $("logout").addEventListener("click", function () { sb.auth.signOut().then(function () { show("login-view"); }); });
+
+  function start(user) {
+    sb.from("admins").select("user_id").eq("user_id", user.id).maybeSingle().then(function (r) {
+      if (!r.data) {
+        show("login-view");
+        $("login-err").textContent = "This account is not an admin. Ask your web designer to give it access.";
+        $("login-err").hidden = false; sb.auth.signOut(); return;
+      }
+      $("who").textContent = user.email;
+      show("app-view");
+      loadOrders(); loadProducts(); loadCustomers(); loadSettings();
+    });
+  }
+  sb.auth.getSession().then(function (r) { if (r.data.session) start(r.data.session.user); else show("login-view"); });
+
+  /* ---------- Tabs ---------- */
+  document.querySelectorAll("[data-tab]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      document.querySelectorAll("[data-tab]").forEach(function (x) { x.setAttribute("aria-selected", x === b ? "true" : "false"); });
+      document.querySelectorAll("[data-panel]").forEach(function (p) { p.hidden = p.dataset.panel !== b.dataset.tab; });
+    });
+  });
+
+  /* ---------- Orders ---------- */
+  var orders = [];
+  function loadOrders() {
+    sb.from("orders").select("*").order("created_at", { ascending: false }).limit(500).then(function (r) {
+      if (r.error) { $("orders").innerHTML = '<div class="empty">Could not load orders.</div>'; return; }
+      orders = r.data; renderOrders();
+    });
+  }
+  function addr(a) {
+    if (!a) return "No address";
+    return [a.line1, a.line2, [a.city, a.state, a.postal_code].filter(Boolean).join(", "), a.country].filter(Boolean).map(esc).join("<br>");
+  }
+  function statusPill(s) { return '<span class="pill ' + ({ paid: "warn", shipped: "ok", cancelled: "bad", refunded: "bad" }[s] || "") + '">' + (s === "paid" ? "To ship" : esc(s)) + "</span>"; }
+  function renderOrders() {
+    var f = $("order-filter").value;
+    var toShip = orders.filter(function (o) { return o.status === "paid"; }).length;
+    var monthStart = new Date(); monthStart.setDate(1); monthStart.setHours(0, 0, 0, 0);
+    var month = orders.filter(function (o) { return new Date(o.created_at) >= monthStart && o.status !== "cancelled" && o.status !== "refunded"; });
+    var all = orders.filter(function (o) { return o.status !== "cancelled" && o.status !== "refunded"; });
+    $("order-stats").innerHTML =
+      '<div class="stat"><b>' + toShip + '</b><span>Orders to ship</span></div>' +
+      '<div class="stat"><b>' + month.length + '</b><span>Orders this month</span></div>' +
+      '<div class="stat"><b class="num">' + money(month.reduce(function (s, o) { return s + o.total_cents; }, 0)) + '</b><span>Sales this month</span></div>' +
+      '<div class="stat"><b class="num">' + money(all.reduce(function (s, o) { return s + o.total_cents; }, 0)) + '</b><span>All-time sales</span></div>';
+    var list = orders.filter(function (o) { return f === "all" || (f === "cancelled" ? (o.status === "cancelled" || o.status === "refunded") : o.status === f); });
+    if (!list.length) { $("orders").innerHTML = '<div class="empty">' + (f === "paid" ? "No orders waiting to ship. 🎉" : "No orders here yet.") + "</div>"; return; }
+    $("orders").innerHTML = list.map(function (o) {
+      var items = (o.items || []).map(function (i) { return "<li>" + esc(i.qty) + " × " + esc(i.name) + " · " + money(i.price_cents, o.currency) + "</li>"; }).join("");
+      return '<article class="order" data-id="' + o.id + '">' +
+        '<div class="order-head"><b>Order #' + o.order_number + "</b>" + statusPill(o.status) + '<span style="color:var(--muted);font-size:13px">' + date(o.created_at) + "</span></div>" +
+        '<div class="order-cols">' +
+          "<div><h3>Items</h3><ul>" + items + '</ul><p style="margin-top:8px" class="num">Subtotal ' + money(o.subtotal_cents, o.currency) + " · Shipping " + money(o.shipping_cents, o.currency) + "<br><b>Total " + money(o.total_cents, o.currency) + "</b></p></div>" +
+          "<div><h3>Customer</h3><p>" + esc(o.customer_name || "") + "<br>" + (o.customer_email ? '<a href="mailto:' + esc(o.customer_email) + '">' + esc(o.customer_email) + "</a>" : "") + "<br>" + esc(o.customer_phone || "") + "</p></div>" +
+          "<div><h3>Ship to</h3><p>" + esc(o.customer_name || "") + "<br>" + addr(o.shipping_address) + '</p><button class="btn small line" type="button" data-copy-addr style="margin-top:6px">Copy address</button></div>' +
+        "</div>" +
+        '<div class="order-actions">' +
+          '<label>Status<select data-f="status"><option value="paid"' + (o.status === "paid" ? " selected" : "") + '>To ship</option><option value="shipped"' + (o.status === "shipped" ? " selected" : "") + '>Shipped</option><option value="cancelled"' + (o.status === "cancelled" ? " selected" : "") + '>Cancelled</option><option value="refunded"' + (o.status === "refunded" ? " selected" : "") + ">Refunded</option></select></label>" +
+          '<label>Tracking number<input type="text" data-f="tracking" value="' + esc(o.tracking_number || "") + '" placeholder="e.g. 9400 1000 0000 0000 0000 00"></label>' +
+          '<button class="btn" type="button" data-save-order>Save</button>' +
+        "</div></article>";
+    }).join("");
+  }
+  $("order-filter").addEventListener("change", renderOrders);
+  $("orders").addEventListener("click", function (e) {
+    var card = e.target.closest(".order"); if (!card) return;
+    var o = orders.filter(function (x) { return x.id === card.dataset.id; })[0];
+    if (e.target.closest("[data-copy-addr]")) {
+      var a = o.shipping_address || {};
+      var text = [o.customer_name, a.line1, a.line2, [a.city, a.state, a.postal_code].filter(Boolean).join(", "), a.country].filter(Boolean).join("\n");
+      try { navigator.clipboard.writeText(text).then(function () { toast("Address copied"); }, function () { toast("Could not copy. Select the address instead."); }); } catch (x) { toast("Could not copy. Select the address instead."); }
+      return;
+    }
+    if (e.target.closest("[data-save-order]")) {
+      var status = card.querySelector('[data-f="status"]').value, tracking = card.querySelector('[data-f="tracking"]').value.trim();
+      var patch = { status: status, tracking_number: tracking || null };
+      if (status === "shipped" && !o.shipped_at) patch.shipped_at = new Date().toISOString();
+      sb.from("orders").update(patch).eq("id", o.id).then(function (r) {
+        if (r.error) { toast("Could not save. Please try again."); return; }
+        Object.assign(o, patch); renderOrders(); toast("Order #" + o.order_number + " saved");
+      });
+    }
+  });
+
+  /* ---------- Products ---------- */
+  var products = [], editing = null, formImgs = [];
+  function loadProducts() {
+    sb.from("products").select("*").order("sort_order").order("created_at").then(function (r) {
+      if (r.error) { $("products").innerHTML = '<div class="empty">Could not load products.</div>'; return; }
+      products = r.data; renderProducts();
+    });
+  }
+  function renderProducts() {
+    if (!products.length) { $("products").innerHTML = '<div class="empty">No products yet. Click “Add product”.</div>'; return; }
+    $("products").innerHTML = products.map(function (p) {
+      var st = !p.active ? '<span class="pill off">Hidden</span>' : p.price_cents == null ? '<span class="pill warn">No price</span>' : p.stock <= 0 ? '<span class="pill bad">Sold out</span>' : p.stock <= 2 ? '<span class="pill warn">Low stock</span>' : '<span class="pill ok">On sale</span>';
+      return '<div class="prow" data-id="' + p.id + '"><img src="' + esc((p.images || [])[0] || "../images/logo.jpg") + '" alt="">' +
+        "<div><b>" + esc(p.name) + "</b><small>" + st + "</small></div>" +
+        '<div class="num pcol">' + (p.price_cents == null ? "<small>No price</small>" : money(p.price_cents)) + "</div>" +
+        '<div class="num pcol">' + p.stock + " in stock</div>" +
+        '<div class="pcol"><button class="btn small line" type="button" data-edit>Edit</button></div></div>';
+    }).join("");
+  }
+  function renderFormImgs() {
+    $("pf-imgs").innerHTML = formImgs.length ? formImgs.map(function (u, i) {
+      return '<figure><img src="' + esc(u) + '" alt=""><div>' + (i > 0 ? '<button type="button" data-first="' + i + '">Main</button>' : '<button type="button" disabled>Main ✓</button>') + '<button type="button" data-rm="' + i + '">Remove</button></div></figure>';
+    }).join("") : '<p style="margin:0;color:var(--muted);font-size:14px">No photos yet.</p>';
+  }
+  function openForm(p) {
+    editing = p || null;
+    $("pf-title").textContent = p ? "Edit product" : "Add product";
+    $("pf-name").value = p ? p.name : "";
+    $("pf-desc").value = p ? p.description : "";
+    $("pf-cat").value = p ? p.category : "necklace";
+    $("pf-price").value = p ? toDollars(p.price_cents) : "";
+    $("pf-stock").value = p ? p.stock : 1;
+    $("pf-sort").value = p ? p.sort_order : 100;
+    $("pf-active").checked = p ? p.active : true;
+    formImgs = p ? (p.images || []).slice() : [];
+    renderFormImgs();
+    $("pf-delete").hidden = !p; $("pf-delete").dataset.armed = ""; $("pf-delete").textContent = "Delete product";
+    $("pf-err").hidden = true;
+    $("product-form-wrap").hidden = false;
+    $("product-form-wrap").scrollIntoView({ behavior: "smooth", block: "start" });
+    $("pf-name").focus();
+  }
+  $("new-product").addEventListener("click", function () { openForm(null); });
+  $("pf-cancel").addEventListener("click", function () { $("product-form-wrap").hidden = true; });
+  $("products").addEventListener("click", function (e) {
+    var row = e.target.closest(".prow"); if (!row || !e.target.closest("[data-edit]")) return;
+    openForm(products.filter(function (p) { return p.id === row.dataset.id; })[0]);
+  });
+  $("pf-imgs").addEventListener("click", function (e) {
+    var rm = e.target.closest("[data-rm]"), first = e.target.closest("[data-first]");
+    if (rm) { formImgs.splice(+rm.dataset.rm, 1); renderFormImgs(); }
+    if (first) { var i = +first.dataset.first; formImgs.unshift(formImgs.splice(i, 1)[0]); renderFormImgs(); }
+  });
+  $("pf-upload").addEventListener("change", function () {
+    var files = Array.prototype.slice.call(this.files || []); this.value = "";
+    if (!files.length) return;
+    toast("Uploading " + files.length + " photo" + (files.length > 1 ? "s" : "") + "…");
+    Promise.all(files.map(function (f) {
+      if (f.size > 8 * 1024 * 1024) return Promise.reject(new Error(f.name + " is bigger than 8 MB."));
+      var path = Date.now() + "-" + Math.random().toString(36).slice(2, 8) + "-" + f.name.replace(/[^a-zA-Z0-9.]+/g, "-").toLowerCase();
+      return sb.storage.from("product-images").upload(path, f, { cacheControl: "31536000", upsert: false }).then(function (r) {
+        if (r.error) throw r.error;
+        return sb.storage.from("product-images").getPublicUrl(path).data.publicUrl;
+      });
+    })).then(function (urls) { formImgs = formImgs.concat(urls); renderFormImgs(); toast("Photos uploaded. Remember to click Save."); })
+      .catch(function (e) { toast(e.message || "Upload failed. Please try again."); });
+  });
+  $("product-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var err = $("pf-err"); err.hidden = true;
+    var row = {
+      name: $("pf-name").value.trim(),
+      description: $("pf-desc").value.trim(),
+      category: $("pf-cat").value,
+      price_cents: toCents($("pf-price").value),
+      stock: parseInt($("pf-stock").value, 10),
+      sort_order: parseInt($("pf-sort").value, 10) || 100,
+      active: $("pf-active").checked,
+      images: formImgs
+    };
+    if (!row.name) { err.textContent = "Please add a name."; err.hidden = false; return; }
+    if (row.price_cents != null && row.price_cents < 50) { err.textContent = "The price must be at least $0.50, or leave it empty."; err.hidden = false; return; }
+    if (isNaN(row.stock) || row.stock < 0) { err.textContent = "Stock must be 0 or more."; err.hidden = false; return; }
+    $("pf-save").disabled = true;
+    var q = editing ? sb.from("products").update(row).eq("id", editing.id) : sb.from("products").insert(row);
+    q.then(function (r) {
+      $("pf-save").disabled = false;
+      if (r.error) { err.textContent = "Could not save: " + r.error.message; err.hidden = false; return; }
+      $("product-form-wrap").hidden = true; toast("Product saved"); loadProducts();
+    });
+  });
+  $("pf-delete").addEventListener("click", function () {
+    var b = this;
+    if (!b.dataset.armed) { b.dataset.armed = "1"; b.textContent = "Click again to delete forever"; return; }
+    sb.from("products").delete().eq("id", editing.id).then(function (r) {
+      if (r.error) { toast("Could not delete. Tip: uncheck “Show on the website” to hide it instead."); return; }
+      $("product-form-wrap").hidden = true; toast("Product deleted"); loadProducts();
+    });
+  });
+
+  /* ---------- Customers ---------- */
+  var customers = [];
+  function loadCustomers() {
+    sb.from("customers").select("*").order("last_order_at", { ascending: false }).then(function (r) {
+      if (r.error) return;
+      customers = r.data;
+      $("customers").innerHTML = customers.length ? customers.map(function (c) {
+        return "<tr><td>" + esc(c.name || "") + '</td><td><a href="mailto:' + esc(c.email) + '">' + esc(c.email) + "</a></td><td>" + esc(c.phone || "") + '</td><td class="num">' + c.orders_count + '</td><td class="num">' + money(c.total_spent_cents) + "</td><td>" + date(c.last_order_at) + "</td><td>" + (c.marketing_ok ? '<span class="pill ok">Yes</span>' : '<span class="pill off">No</span>') + "</td></tr>";
+      }).join("") : '<tr><td colspan="7" style="text-align:center;color:var(--muted)">No customers yet. They appear here after their first order.</td></tr>';
+    });
+  }
+  $("copy-emails").addEventListener("click", function () {
+    var list = customers.filter(function (c) { return c.marketing_ok; }).map(function (c) { return c.email; }).join(", ");
+    if (!list) { toast("No customers have said yes to emails yet."); return; }
+    try { navigator.clipboard.writeText(list).then(function () { toast("Emails copied"); }, function () { toast("Could not copy."); }); } catch (e) { toast("Could not copy."); }
+  });
+  $("export-csv").addEventListener("click", function () {
+    var rows = [["Name", "Email", "Phone", "Orders", "Spent", "Last order", "Newsletter OK"]].concat(customers.map(function (c) {
+      return [c.name || "", c.email, c.phone || "", c.orders_count, (c.total_spent_cents / 100).toFixed(2), c.last_order_at || "", c.marketing_ok ? "yes" : "no"];
+    }));
+    var csv = rows.map(function (r) { return r.map(function (v) { return '"' + String(v).replace(/"/g, '""') + '"'; }).join(","); }).join("\n");
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(new Blob([csv], { type: "text/csv" }));
+    a.download = "orbal-customers.csv"; document.body.appendChild(a); a.click(); a.remove();
+  });
+
+  /* ---------- Settings ---------- */
+  function loadSettings() {
+    sb.from("store_settings").select("*").eq("id", 1).single().then(function (r) {
+      if (r.error) return;
+      $("st-us").value = toDollars(r.data.shipping_us_cents);
+      $("st-world").value = toDollars(r.data.shipping_world_cents);
+      $("st-free").value = toDollars(r.data.free_shipping_over_cents);
+      $("st-open").checked = r.data.store_open;
+    });
+  }
+  $("settings-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    $("st-ok").hidden = true; $("st-err").hidden = true;
+    var row = { shipping_us_cents: toCents($("st-us").value), shipping_world_cents: toCents($("st-world").value), free_shipping_over_cents: toCents($("st-free").value), store_open: $("st-open").checked, updated_at: new Date().toISOString() };
+    if (row.shipping_us_cents == null || row.shipping_world_cents == null) { $("st-err").textContent = "Please fill in both shipping prices (0 for free)."; $("st-err").hidden = false; return; }
+    sb.from("store_settings").update(row).eq("id", 1).then(function (r) {
+      if (r.error) { $("st-err").textContent = "Could not save: " + r.error.message; $("st-err").hidden = false; return; }
+      $("st-ok").hidden = false;
+    });
+  });
+})();
+</script>
+</body>
+</html>

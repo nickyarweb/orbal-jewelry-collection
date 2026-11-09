@@ -156,6 +156,78 @@ footer{background:var(--ink);color:#cbb9a8;font-size:14px}
 footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding-block:30px}
 footer .brand b{color:var(--gold-soft);font-size:20px}
 
+/* ---------- Shop ---------- */
+[hidden]{display:none!important}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+body.lock{overflow:hidden}
+.shop-only{display:none!important}
+.shop-live .shop-only{display:inline-flex!important}
+.shop-live .no-shop{display:none!important}
+.cart-btn .count{display:inline-grid;place-items:center;min-width:22px;height:22px;padding:0 6px;border-radius:999px;background:var(--white);color:var(--ruby);font-size:12px;letter-spacing:0}
+.item .ph{display:block;width:100%;padding:0;border:0;cursor:pointer;font:inherit}
+.item button.order{background:none;border:0;padding:0;cursor:pointer;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ruby);border-bottom:1px solid currentColor;font-family:var(--font-body)}
+.stock.low{color:var(--ruby)}
+.stock.out{background:var(--ink)!important;color:var(--white)!important}
+.stock.soon{color:var(--muted)!important}
+.empty-shop{grid-column:1/-1;text-align:center;padding:60px 20px;background:var(--white);border-radius:16px}
+.empty-shop h3{font-size:26px;margin-bottom:8px}
+
+.overlay{position:fixed;inset:0;z-index:60;background:rgba(42,26,23,.55);display:grid;place-items:center;padding:max(16px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(16px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px))}
+.sheet{position:relative;background:var(--white);border-radius:20px;width:min(980px, 100%);max-height:calc(100vh - 32px);overflow:auto}
+.x{position:absolute;right:14px;top:14px;z-index:2;width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:var(--white);font-size:22px;line-height:1;cursor:pointer;color:var(--ink)}
+.pm-grid{display:grid;grid-template-columns:1.05fr .95fr}
+.pm-media{background:var(--silk);padding:18px;display:grid;gap:10px;align-content:start}
+.pm-media > img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:12px}
+.pm-thumbs{display:flex;gap:8px;flex-wrap:wrap}
+.pm-thumbs button{width:62px;height:62px;padding:0;border:2px solid transparent;border-radius:10px;overflow:hidden;cursor:pointer;background:none}
+.pm-thumbs button[aria-current="true"]{border-color:var(--ruby)}
+.pm-thumbs img{width:100%;height:100%;object-fit:cover}
+.pm-info{padding:40px 34px 30px;display:grid;gap:14px;align-content:start}
+.pm-info h2{font-size:clamp(28px, 3.6vw, 38px);padding-right:30px}
+.pm-price-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.pm-price{font-family:var(--font-display);font-size:30px;color:var(--ruby)}
+.pm-price-row .stock{position:static;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:var(--ivory);color:var(--emerald);padding:6px 10px;border-radius:999px}
+.pm-info p{color:var(--muted)}
+.pm-buy{display:grid;grid-template-columns:auto 1fr;gap:10px 12px;align-items:center;margin-top:6px}
+.pm-buy label{font-size:13px;font-weight:700;color:var(--muted)}
+.pm-buy select,.cart-summary select,.cart-qty select{font:600 15px var(--font-body);color:var(--ink);background:var(--white);border:1.5px solid var(--line);border-radius:10px;padding:10px 12px}
+.pm-buy .btn{grid-column:1/-1;width:100%}
+.pm-unavailable{background:var(--ivory);border-radius:10px;padding:12px 14px;color:var(--ink)!important}
+.pm-msg{color:var(--ruby)!important;font-size:14px;min-height:1em}
+.pm-trust{list-style:none;padding:16px 0 0;margin:0;border-top:1px solid var(--line);display:grid;gap:6px;font-size:14px;color:var(--muted)}
+.pm-trust a{color:var(--ruby)}
+
+.cart-overlay{place-items:stretch end;padding:0}
+.drawer{background:var(--white);width:min(440px, 100vw);height:100%;display:flex;flex-direction:column;padding:max(20px, env(safe-area-inset-top, 0px)) max(22px, env(safe-area-inset-right, 0px)) max(20px, env(safe-area-inset-bottom, 0px)) 22px;overflow:auto}
+.drawer-head{position:relative;display:flex;align-items:center;justify-content:space-between;padding-bottom:16px;border-bottom:1px solid var(--line)}
+.drawer-head h2{font-size:28px}
+.drawer-head .x{position:static}
+.cart-list{display:grid;gap:14px;padding-block:18px;flex:1;align-content:start}
+.cart-empty{color:var(--muted);text-align:center;padding:40px 10px}
+.cart-line{display:grid;grid-template-columns:64px 1fr auto;gap:12px;align-items:center}
+.cart-line img{width:64px;height:64px;object-fit:cover;border-radius:10px}
+.cart-line b{display:block;font-weight:600;font-size:15px}
+.cart-line span{font-size:14px;color:var(--muted);display:block}
+.cart-line .warn{color:var(--ruby)}
+.cart-qty{display:grid;gap:4px;justify-items:end}
+.link{background:none;border:0;padding:0;color:var(--muted);text-decoration:underline;cursor:pointer;font:400 13px var(--font-body)}
+.cart-summary{display:grid;gap:10px;border-top:1px solid var(--line);padding-top:16px}
+.cart-summary label{font-size:13px;font-weight:700;color:var(--muted)}
+.sum-row{display:flex;justify-content:space-between;font-size:15px;font-variant-numeric:tabular-nums}
+.sum-row.total{font-weight:700;font-size:18px;padding-top:8px;border-top:1px solid var(--line)}
+.free-note{font-size:13px;color:var(--emerald)}
+.cart-error{background:#fbe9ea;color:var(--ruby-deep);border-radius:10px;padding:10px 12px;font-size:14px}
+.checkout-btn{width:100%;margin-top:4px}
+.checkout-btn:disabled{opacity:.7;cursor:wait;transform:none}
+.pay-note{font-size:12px;color:var(--muted);text-align:center}
+
+@media (max-width: 760px){
+  .pm-grid{grid-template-columns:1fr}
+  .pm-media > img{aspect-ratio:1/1}
+  .pm-info{padding:24px 20px 24px}
+  .overlay:not(.cart-overlay){padding:10px}
+}
+
 @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition:none!important}}
 @media (max-width: 1000px){
   .grid{grid-template-columns:repeat(3,1fr)}
@@ -190,7 +262,8 @@ footer .brand b{color:var(--gold-soft);font-size:20px}
       <a href="#collection">Collection</a>
       <a href="#heritage">Heritage</a>
       <a href="#order">How to order</a>
-      <a class="btn btn-ruby" href="https://ig.me/m/orbal_jewelry_collection" target="_blank" rel="noopener">DM to order</a>
+      <button class="btn btn-ruby shop-only cart-btn" type="button" data-open-cart aria-label="Open cart">Cart <span class="count" data-cart-count>0</span></button>
+      <a class="btn btn-ruby no-shop" href="#collection">Shop now</a>
     </nav>
   </div>
 </header>
@@ -205,7 +278,7 @@ footer .brand b{color:var(--gold-soft);font-size:20px}
         <p class="lead">Handpicked statement necklaces, cuffs, hand chains and earrings, inspired by generations of Afghan craftsmanship. Based in the USA, shipping worldwide.</p>
         <div class="actions">
           <a class="btn btn-ruby" href="#collection">Shop the collection</a>
-          <a class="btn btn-line" href="https://ig.me/m/orbal_jewelry_collection" target="_blank" rel="noopener">Order on Instagram</a>
+          <a class="btn btn-line" href="#order">How to order</a>
         </div>
       </div>
       <div class="hero-photo">
@@ -237,15 +310,15 @@ footer .brand b{color:var(--gold-soft);font-size:20px}
         <button class="filter" type="button" data-cat="hand" aria-pressed="false">Hand chains</button>
         <button class="filter" type="button" data-cat="earring" aria-pressed="false">Earrings</button>      </div>
       <div class="grid" id="grid">
-        <article class="item" data-cat="necklace hand"><div class="ph"><img src="images/post8.jpg" alt="Silver choker with red stones and matching hand chain" loading="lazy"><span class="stock">In stock</span></div><h3>Afghan Choker &amp; Hand Chain Set</h3><p>Layered silver-tone choker with red stones and a matching hand chain.</p><div class="row"><span class="price">Price on request</span><a class="order" href="https://ig.me/m/orbal_jewelry_collection" target="_blank" rel="noopener">Order</a></div></article>
-        <article class="item" data-cat="earring"><div class="ph"><img src="images/earrings.jpg" alt="Silver-tone hoop earrings with a red center stone, red and green stones and tiny bells" loading="lazy"><span class="stock">In stock</span></div><h3>Afghan Hoop Earrings</h3><p>Large statement hoops with a red center stone, red and green stones and tiny bells.</p><div class="row"><span class="price">Price on request</span><a class="order" href="https://ig.me/m/orbal_jewelry_collection" target="_blank" rel="noopener">Order</a></div></article>
-        <article class="item" data-cat="necklace earring"><div class="ph"><img src="images/colorful-set.jpg" alt="Colorful Afghan choker with red, green and blue stones, coin drops and matching earrings" loading="lazy"><span class="stock">In stock</span></div><h3>Afghan Colorful Choker Set</h3><p>Choker with red, green and blue stones and coin drops, with matching earrings.</p><div class="row"><span class="price">Price on request</span><a class="order" href="https://ig.me/m/orbal_jewelry_collection" target="_blank" rel="noopener">Order</a></div></article>
-        <article class="item" data-cat="bracelet"><div class="ph"><img src="images/post12.jpg" alt="Wide gold cuff set with colorful stones" loading="lazy"><span class="stock">In stock</span></div><h3>Afghan Jeweled Cuff</h3><p>Wide gold-tone cuff with colorful stones.</p><div class="row"><span class="price">Price on request</span><a class="order" href="https://ig.me/m/orbal_jewelry_collection" target="_blank" rel="noopener">Order</a></div></article>
-        <article class="item" data-cat="bracelet"><div class="ph"><img src="images/red-stone.jpg" alt="Wide silver-tone cuff bracelet with a long red stone, next to a gold mirror" loading="lazy" style="object-position:center 40%"><span class="stock">In stock</span></div><h3>Afghan Red Stone Cuff</h3><p>Wide silver-tone cuff bracelet with a long red stone and a detailed pattern.</p><div class="row"><span class="price">Price on request</span><a class="order" href="https://ig.me/m/orbal_jewelry_collection" target="_blank" rel="noopener">Order</a></div></article>
-        <article class="item" data-cat="necklace"><div class="ph"><img src="images/post10.jpg" alt="Gold statement necklace with coin details" loading="lazy"><span class="stock">In stock</span></div><h3>Afghan Gold Statement Necklace</h3><p>Bold gold-tone necklace with coin details and a round pendant.</p><div class="row"><span class="price">Price on request</span><a class="order" href="https://ig.me/m/orbal_jewelry_collection" target="_blank" rel="noopener">Order</a></div></article>
-        <article class="item" data-cat="hand necklace"><div class="ph"><img src="images/post7.jpg" alt="Silver choker set with matching hand chain on white fabric" loading="lazy"><span class="stock">In stock</span></div><h3>Afghan Bridal Set</h3><p>Choker and hand chain with red stones. Perfect for weddings and Eid.</p><div class="row"><span class="price">Price on request</span><a class="order" href="https://ig.me/m/orbal_jewelry_collection" target="_blank" rel="noopener">Order</a></div></article>
-        <article class="item" data-cat="necklace"><div class="ph"><img src="images/post9.jpg" alt="Antique brass necklace with triangle pendants" loading="lazy"><span class="stock">In stock</span></div><h3>Afghan Triangle Necklace</h3><p>Antique-style necklace with three triangle pendants.</p><div class="row"><span class="price">Price on request</span><a class="order" href="https://ig.me/m/orbal_jewelry_collection" target="_blank" rel="noopener">Order</a></div></article>
-        <article class="item" data-cat="bracelet"><div class="ph"><img src="images/blue-cuffs.jpg" alt="Pair of wide silver-tone cuffs with blue and red stones" loading="lazy"><span class="stock">In stock</span></div><h3>Afghan Blue Stone Cuffs</h3><p>Wide silver-tone cuffs with deep blue stones and small red accents.</p><div class="row"><span class="price">Price on request</span><a class="order" href="https://ig.me/m/orbal_jewelry_collection" target="_blank" rel="noopener">Order</a></div></article>
+        <article class="item" data-cat="necklace hand"><div class="ph"><img src="images/post8.jpg" alt="Silver choker with red stones and matching hand chain" loading="lazy"><span class="stock">In stock</span></div><h3>Afghan Choker &amp; Hand Chain Set</h3><p>Layered silver-tone choker with red stones and a matching hand chain.</p><div class="row"><span class="price">Price on request</span><a class="order" href="mailto:info@orbaljewelrycollection.com?subject=Order%20request">Order</a></div></article>
+        <article class="item" data-cat="earring"><div class="ph"><img src="images/earrings.jpg" alt="Silver-tone hoop earrings with a red center stone, red and green stones and tiny bells" loading="lazy"><span class="stock">In stock</span></div><h3>Afghan Hoop Earrings</h3><p>Large statement hoops with a red center stone, red and green stones and tiny bells.</p><div class="row"><span class="price">Price on request</span><a class="order" href="mailto:info@orbaljewelrycollection.com?subject=Order%20request">Order</a></div></article>
+        <article class="item" data-cat="necklace earring"><div class="ph"><img src="images/colorful-set.jpg" alt="Colorful Afghan choker with red, green and blue stones, coin drops and matching earrings" loading="lazy"><span class="stock">In stock</span></div><h3>Afghan Colorful Choker Set</h3><p>Choker with red, green and blue stones and coin drops, with matching earrings.</p><div class="row"><span class="price">Price on request</span><a class="order" href="mailto:info@orbaljewelrycollection.com?subject=Order%20request">Order</a></div></article>
+        <article class="item" data-cat="bracelet"><div class="ph"><img src="images/post12.jpg" alt="Wide gold cuff set with colorful stones" loading="lazy"><span class="stock">In stock</span></div><h3>Afghan Jeweled Cuff</h3><p>Wide gold-tone cuff with colorful stones.</p><div class="row"><span class="price">Price on request</span><a class="order" href="mailto:info@orbaljewelrycollection.com?subject=Order%20request">Order</a></div></article>
+        <article class="item" data-cat="bracelet"><div class="ph"><img src="images/red-stone.jpg" alt="Wide silver-tone cuff bracelet with a long red stone, next to a gold mirror" loading="lazy" style="object-position:center 40%"><span class="stock">In stock</span></div><h3>Afghan Red Stone Cuff</h3><p>Wide silver-tone cuff bracelet with a long red stone and a detailed pattern.</p><div class="row"><span class="price">Price on request</span><a class="order" href="mailto:info@orbaljewelrycollection.com?subject=Order%20request">Order</a></div></article>
+        <article class="item" data-cat="necklace"><div class="ph"><img src="images/post10.jpg" alt="Gold statement necklace with coin details" loading="lazy"><span class="stock">In stock</span></div><h3>Afghan Gold Statement Necklace</h3><p>Bold gold-tone necklace with coin details and a round pendant.</p><div class="row"><span class="price">Price on request</span><a class="order" href="mailto:info@orbaljewelrycollection.com?subject=Order%20request">Order</a></div></article>
+        <article class="item" data-cat="hand necklace"><div class="ph"><img src="images/post7.jpg" alt="Silver choker set with matching hand chain on white fabric" loading="lazy"><span class="stock">In stock</span></div><h3>Afghan Bridal Set</h3><p>Choker and hand chain with red stones. Perfect for weddings and Eid.</p><div class="row"><span class="price">Price on request</span><a class="order" href="mailto:info@orbaljewelrycollection.com?subject=Order%20request">Order</a></div></article>
+        <article class="item" data-cat="necklace"><div class="ph"><img src="images/post9.jpg" alt="Antique brass necklace with triangle pendants" loading="lazy"><span class="stock">In stock</span></div><h3>Afghan Triangle Necklace</h3><p>Antique-style necklace with three triangle pendants.</p><div class="row"><span class="price">Price on request</span><a class="order" href="mailto:info@orbaljewelrycollection.com?subject=Order%20request">Order</a></div></article>
+        <article class="item" data-cat="bracelet"><div class="ph"><img src="images/blue-cuffs.jpg" alt="Pair of wide silver-tone cuffs with blue and red stones" loading="lazy"><span class="stock">In stock</span></div><h3>Afghan Blue Stone Cuffs</h3><p>Wide silver-tone cuffs with deep blue stones and small red accents.</p><div class="row"><span class="price">Price on request</span><a class="order" href="mailto:info@orbaljewelrycollection.com?subject=Order%20request">Order</a></div></article>
       </div>
     </div>
   </section>
@@ -277,9 +350,9 @@ footer .brand b{color:var(--gold-soft);font-size:20px}
         <h2>Ordering is <em>easy</em></h2>
       </div>
       <div class="steps">
-        <div class="step"><span class="n">1</span><h3>Choose</h3><p>Browse the collection and find the piece you love.</p></div>
-        <div class="step"><span class="n">2</span><h3>Message us</h3><p>Send a DM on Instagram with a photo or the name of the piece.</p></div>
-        <div class="step"><span class="n">3</span><h3>Confirm</h3><p>We confirm availability, price and shipping to your country.</p></div>
+        <div class="step"><span class="n">1</span><h3>Choose</h3><p>Tap any piece to see more photos, details and the price.</p></div>
+        <div class="step"><span class="n">2</span><h3>Add to cart</h3><p>Add your favorites and choose where we should ship.</p></div>
+        <div class="step"><span class="n">3</span><h3>Pay securely</h3><p>Checkout with card, Apple Pay or Google Pay on a secure Stripe page.</p></div>
         <div class="step"><span class="n">4</span><h3>Receive</h3><p>Your jewelry is carefully packed and shipped to your door.</p></div>
       </div>
     </div>
@@ -310,11 +383,11 @@ footer .brand b{color:var(--gold-soft);font-size:20px}
         <div>
           <span class="label">Get in touch</span>
           <h2 style="margin-top:12px">Found a piece you <em>love?</em></h2>
-          <p>Message us on Instagram and we’ll help you choose, answer your questions and arrange shipping anywhere in the world.</p>
-          <div class="actions" style="margin-top:26px"><a class="btn btn-ruby" href="https://ig.me/m/orbal_jewelry_collection" target="_blank" rel="noopener">Send us a DM</a></div>
+          <p>Have a question about a piece, sizing or shipping? Email us and we’ll get back to you quickly.</p>
+          <div class="actions" style="margin-top:26px"><a class="btn btn-ruby" href="mailto:info@orbaljewelrycollection.com">Email us</a><a class="btn btn-line" href="#collection">Shop the collection</a></div>
         </div>
         <ul>
-          <li><i aria-hidden="true">✉</i><div><b>Instagram DM</b><span>@orbal_jewelry_collection</span></div></li>
+          <li><i aria-hidden="true">🔒</i><div><b>Secure checkout</b><span>Card, Apple Pay and Google Pay</span></div></li>
           <li><i aria-hidden="true">@</i><div><b>Email</b><span><a href="mailto:info@orbaljewelrycollection.com" style="color:inherit">info@orbaljewelrycollection.com</a></span></div></li>
           <li><i aria-hidden="true">⌂</i><div><b>Based in the USA</b><span>Tracked shipping on every order</span></div></li>
           <li><i aria-hidden="true">✈</i><div><b>Worldwide shipping</b><span>We ship to your country</span></div></li>
@@ -332,8 +405,61 @@ footer .brand b{color:var(--gold-soft);font-size:20px}
   </div>
 </footer>
 
+<!-- Product popup -->
+<div class="overlay" id="product-modal" hidden role="dialog" aria-modal="true" aria-labelledby="pm-name">
+  <div class="sheet">
+    <button class="x" type="button" id="pm-close" aria-label="Close">×</button>
+    <div class="pm-grid">
+      <div class="pm-media">
+        <img id="pm-main" src="" alt="">
+        <div class="pm-thumbs" id="pm-thumbs"></div>
+      </div>
+      <div class="pm-info">
+        <span class="label" id="pm-cat"></span>
+        <h2 id="pm-name"></h2>
+        <div class="pm-price-row"><span class="pm-price" id="pm-price"></span><span id="pm-stock"></span></div>
+        <p id="pm-desc"></p>
+        <div class="pm-buy" id="pm-buy-row">
+          <label for="pm-qty">Quantity</label>
+          <select id="pm-qty"></select>
+          <button class="btn btn-ruby" type="button" id="pm-add">Add to cart</button>
+        </div>
+        <p class="pm-unavailable" id="pm-unavailable" hidden></p>
+        <p class="pm-msg" id="pm-msg" role="status"></p>
+        <ul class="pm-trust">
+          <li>🔒 Secure checkout with Stripe</li>
+          <li>✈ Ships from the USA, worldwide</li>
+          <li>✉ Questions? <a href="mailto:info@orbaljewelrycollection.com">info@orbaljewelrycollection.com</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Cart -->
+<div class="overlay cart-overlay" id="cart" hidden role="dialog" aria-modal="true" aria-labelledby="cart-title">
+  <aside class="drawer">
+    <div class="drawer-head"><h2 id="cart-title">Your cart</h2><button class="x" type="button" id="cart-close" aria-label="Close cart">×</button></div>
+    <div class="cart-list" id="cart-list"></div>
+    <div class="cart-summary" id="cart-summary" hidden>
+      <label for="cart-region">Ship to</label>
+      <select id="cart-region"><option value="us">United States</option><option value="world">Outside the United States</option></select>
+      <div class="sum-row"><span>Subtotal</span><span id="cart-subtotal"></span></div>
+      <div class="sum-row"><span>Shipping</span><span id="cart-shipping"></span></div>
+      <p class="free-note" id="cart-free" hidden></p>
+      <div class="sum-row total"><span>Total</span><span id="cart-total"></span></div>
+      <p class="cart-error" id="cart-error" hidden role="alert"></p>
+      <button class="btn btn-ruby checkout-btn" type="button" id="cart-checkout">Checkout securely</button>
+      <p class="pay-note">🔒 Card, Apple Pay and Google Pay on Stripe's secure page.</p>
+    </div>
+  </aside>
+</div>
+
+<script src="config.js"></script>
+<script src="store.js"></script>
 <script>
 (function(){
+  if (document.documentElement.classList.contains('shop-live')) return;
   var items = document.querySelectorAll('.item');
   document.querySelectorAll('.filter').forEach(function(b){
     b.addEventListener('click', function(){

@@ -1,0 +1,8 @@
+# Supabase settings for the ORBAL store.
+# The project id is filled in when the project is linked.
+
+[functions.create-checkout]
+verify_jwt = false
+
+[functions.stripe-webhook]
+verify_jwt = false
