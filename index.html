@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Orbal Jewelry Collection · Authentic Afghan Heritage Jewelry</title>
+<meta name="description" content="ORBAL Jewelry Collection: authentic Afghan heritage jewelry. USA based, worldwide shipping. Necklaces, cuffs, hand chains, earrings and rings.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Mulish:wght@400;600;700&family=Vazirmatn:wght@500;700&display=swap">
+<style>
+/* Layout: heritage jewelry boutique. Ivory silk ground, ruby and emerald from the stones, antique gold from the logo. */
+:root{
+  color-scheme:light;
+  --ivory:#f8f2e8;
+  --silk:#efe4d2;
+  --white:#fffcf7;
+  --ink:#2a1a17;
+  --muted:#6f5d55;
+  --ruby:#7d1628;
+  --ruby-deep:#5a0f1c;
+  --emerald:#1e4d3b;
+  --gold:#b08a45;
+  --gold-soft:#d8bf8a;
+  --line:rgba(42,26,23,.14);
+  --font-display:"Marcellus", "Cormorant Garamond", Georgia, serif;
+  --font-accent:"Cormorant Garamond", Georgia, serif;
+  --font-body:"Mulish", "Segoe UI", system-ui, sans-serif;
+  --font-fa:"Vazirmatn", Tahoma, sans-serif;
+  --wrap:1200px;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ivory);color:var(--ink);font-family:var(--font-body);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+.wrap{max-width:var(--wrap);margin:0 auto;padding-left:max(20px, env(safe-area-inset-left, 0px));padding-right:max(20px, env(safe-area-inset-right, 0px))}
+h1,h2,h3{font-family:var(--font-display);font-weight:400;margin:0;line-height:1.1;text-wrap:balance}
+p{margin:0}
+a{color:inherit}
+em{font-family:var(--font-accent);font-style:italic;color:var(--ruby)}
+.fa{font-family:var(--font-fa);direction:rtl}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.label{font-size:12px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:var(--gold)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:700 14px/1 var(--font-body);letter-spacing:.12em;text-transform:uppercase;padding:17px 28px;border-radius:999px;text-decoration:none;border:1.5px solid var(--ruby);cursor:pointer;transition:background .2s, color .2s, transform .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn-ruby{background:var(--ruby);color:var(--white)}
+.btn-ruby:hover{background:var(--ruby-deep);border-color:var(--ruby-deep)}
+.btn-line{background:transparent;color:var(--ruby)}
+.btn-line:hover{background:var(--ruby);color:var(--white)}
+
+/* Ornament divider */
+.orn{display:flex;align-items:center;gap:14px;color:var(--gold)}
+.orn::before,.orn::after{content:"";height:1px;width:48px;background:currentColor;opacity:.7}
+
+.concept{background:var(--ink);color:var(--gold-soft);font-size:13px;text-align:center}
+.concept .wrap{padding-block:8px}
+
+/* Header */
+.top{position:sticky;top:env(safe-area-inset-top, 0px);z-index:20;background:rgba(248,242,232,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top, 0px);z-index:30;background:var(--ivory)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-block:10px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand img{width:54px;height:54px;border-radius:50%;object-fit:cover;border:1px solid var(--gold-soft)}
+.brand b{font-family:var(--font-display);font-weight:400;font-size:24px;letter-spacing:.08em}
+.brand span{display:block;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
+.links{display:flex;gap:30px;align-items:center;font-size:14px;font-weight:600;letter-spacing:.06em}
+.links a{text-decoration:none}
+.links a:hover{color:var(--ruby)}
+.links .btn{padding:12px 20px;font-size:12px}
+
+/* Hero */
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center;padding-block:72px 90px}
+.hero-text{display:grid;gap:24px}
+.hero .fa{font-size:40px;color:var(--gold);line-height:1;justify-self:start}
+.hero h1{font-size:clamp(46px, 6.4vw, 86px)}
+.hero .lead{font-size:19px;color:var(--muted);max-width:42ch}
+.actions{display:flex;gap:12px;flex-wrap:wrap}
+.hero-photo{position:relative;min-width:0;isolation:isolate}
+.hero-photo img{width:100%;aspect-ratio:1122/1402;object-fit:cover;border-radius:14px;box-shadow:0 30px 60px -30px rgba(42,26,23,.55)}
+.hero-photo::before{content:"";position:absolute;inset:-14px;border:1px solid var(--gold);border-radius:22px;z-index:-1}
+.hero-photo .tag{position:absolute;left:-22px;bottom:40px;background:var(--white);border-radius:14px;padding:14px 18px;box-shadow:0 20px 40px -22px rgba(42,26,23,.45);display:grid;gap:2px}
+.hero-photo .tag b{font-family:var(--font-display);font-weight:400;font-size:20px;color:var(--ruby)}
+.hero-photo .tag span{font-size:13px;color:var(--muted)}
+
+/* Trust strip */
+.trust{background:var(--ruby);color:var(--white)}
+.trust .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;padding-block:22px;text-align:center}
+.trust div{display:grid;gap:2px}
+.trust b{font-family:var(--font-display);font-weight:400;font-size:19px}
+.trust span{font-size:13px;color:#f1d6d9}
+
+section{padding-block:96px}
+.head{display:grid;justify-items:center;text-align:center;gap:14px;margin-bottom:44px}
+.head h2{font-size:clamp(38px, 5vw, 60px)}
+.head p{color:var(--muted);max-width:52ch}
+
+/* Collection */
+.filters{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:36px}
+.filter{border:1.5px solid var(--line);background:var(--white);border-radius:999px;padding:10px 18px;font:600 14px var(--font-body);cursor:pointer;color:var(--ink)}
+.filter[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--white)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+.item{display:grid;gap:12px;align-content:start}
+.item .ph{position:relative;aspect-ratio:3/4;overflow:hidden;border-radius:12px;background:var(--silk)}
+.item .ph img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.item:hover .ph img{transform:scale(1.05)}
+.item .stock{position:absolute;left:10px;top:10px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:var(--white);color:var(--emerald);padding:6px 10px;border-radius:999px}
+.item h3{font-size:21px}
+.item p{font-size:14px;color:var(--muted)}
+.item .row{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.item .price{font-family:var(--font-accent);font-style:italic;font-size:18px;color:var(--ruby)}
+.item a.order{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ruby);text-decoration:none;border-bottom:1px solid currentColor}
+
+/* Heritage */
+.heritage{background:var(--emerald);color:var(--white)}
+.heritage .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:72px;align-items:center}
+.heritage .label{color:var(--gold-soft)}
+.heritage-photos{display:grid;grid-template-columns:1fr 1fr;gap:16px;min-width:0}
+.heritage-photos img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:12px}
+.heritage-photos img:last-child{margin-top:56px}
+.heritage-text{display:grid;gap:22px}
+.heritage-text h2{font-size:clamp(36px, 4.6vw, 58px)}
+.heritage-text h2 em{color:var(--gold-soft)}
+.heritage-text p{color:#d6e3dc;font-size:18px;max-width:50ch}
+.values{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:10px}
+.values div{border-top:1px solid rgba(216,191,138,.5);padding-top:14px;display:grid;gap:4px}
+.values b{font-family:var(--font-display);font-weight:400;font-size:20px;color:var(--gold-soft)}
+.values span{font-size:14px;color:#c6d6ce}
+
+/* How to order */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.step{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:28px;display:grid;gap:10px;align-content:start;text-align:center;justify-items:center}
+.step .n{width:52px;height:52px;border-radius:50%;border:1px solid var(--gold);display:grid;place-items:center;font-family:var(--font-display);font-size:22px;color:var(--ruby)}
+.step h3{font-size:22px}
+.step p{color:var(--muted);font-size:15px}
+
+/* Instagram strip */
+.feed{background:var(--silk)}
+.strip{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+.strip a{display:block;aspect-ratio:1/1;overflow:hidden;border-radius:10px}
+.strip img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.strip a:hover img{transform:scale(1.07)}
+.feed .center{display:flex;justify-content:center;margin-top:32px}
+
+/* Contact */
+.contact .box{background:var(--white);border:1px solid var(--line);border-radius:24px;padding:56px;display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+.contact h2{font-size:clamp(34px, 4.4vw, 54px)}
+.contact p{color:var(--muted);margin-top:14px}
+.contact ul{list-style:none;padding:0;margin:0;display:grid;gap:14px}
+.contact li{display:flex;gap:14px;align-items:center}
+.contact li i{font-style:normal;width:42px;height:42px;flex:none;border-radius:50%;background:var(--silk);display:grid;place-items:center;color:var(--ruby)}
+.contact li b{display:block}
+.contact li span{font-size:14px;color:var(--muted)}
+
+footer{background:var(--ink);color:#cbb9a8;font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding-block:30px}
+footer .brand b{color:var(--gold-soft);font-size:20px}
+
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition:none!important}}
+@media (max-width: 1000px){
+  .grid{grid-template-columns:repeat(3,1fr)}
+  .steps{grid-template-columns:1fr 1fr}
+  .strip{grid-template-columns:repeat(3,1fr)}
+}
+@media (max-width: 860px){
+  section{padding-block:72px}
+  .links a:not(.btn){display:none}
+  .hero .wrap,.heritage .wrap,.contact .box{grid-template-columns:1fr;gap:48px}
+  .hero-photo{max-width:440px;margin-inline:auto}
+  .hero-photo .tag{left:0}
+  .trust .wrap{grid-template-columns:1fr 1fr}
+  .grid{grid-template-columns:1fr 1fr}
+  .contact .box{padding:34px 24px}
+  .heritage-photos{max-width:480px}
+}
+@media (max-width: 520px){
+  .steps,.values{grid-template-columns:1fr}
+  .grid{gap:16px}
+  .item h3{font-size:18px}
+  .brand span{display:none}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="images/logo.jpg" alt="Orbal Jewelry Collection logo"><div><b>ORBAL</b><span>Jewelry Collection</span></div></a>
+    <nav class="links" aria-label="Main">
+      <a href="#collection">Collection</a>
+      <a href="#heritage">Heritage</a>
+      <a href="#order">How to order</a>
+      <a class="btn btn-ruby" href="https://ig.me/m/orbal_jewelry_collection" target="_blank" rel="noopener">DM to order</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" style="padding-block:0">
+    <div class="wrap">
+      <div class="hero-text">
+        <span class="fa" lang="fa">اوربل</span>
+        <div class="orn"><span class="label">Authentic Afghan Heritage Jewelry</span></div>
+        <h1>Jewelry with a <em>story</em> in every stone.</h1>
+        <p class="lead">Handpicked statement necklaces, cuffs, hand chains and earrings, inspired by generations of Afghan craftsmanship. Based in the USA, shipping worldwide.</p>
+        <div class="actions">
+          <a class="btn btn-ruby" href="#collection">Shop the collection</a>
+          <a class="btn btn-line" href="https://ig.me/m/orbal_jewelry_collection" target="_blank" rel="noopener">Order on Instagram</a>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <img src="images/hero.jpg" alt="Model wearing layered Afghan necklaces with red, green and blue stones, a statement ring and a traditional embroidered dress">
+      </div>
+    </div>
+  </section>
+
+  <div class="trust">
+    <div class="wrap">
+      <div><b>Authentic pieces</b><span>True Afghan heritage style</span></div>
+      <div><b>USA based</b><span>Fast, tracked shipping</span></div>
+      <div><b>Worldwide shipping</b><span>We ship to your door</span></div>
+      <div><b>Easy ordering</b><span>Simply send us a message</span></div>
+    </div>
+  </div>
+
+  <section id="collection">
+    <div class="wrap">
+      <div class="head">
+        <div class="orn"><span class="label">The collection</span></div>
+        <h2>Pieces made to be <em>remembered</em></h2>
+        <p>Each piece is limited. Send us a message with a photo of the item you love, and we’ll confirm availability and price.</p>
+      </div>
+      <div class="filters" role="group" aria-label="Filter collection">
+        <button class="filter" type="button" data-cat="all" aria-pressed="true">All</button>
+        <button class="filter" type="button" data-cat="necklace" aria-pressed="false">Necklaces</button>
+        <button class="filter" type="button" data-cat="bracelet" aria-pressed="false">Cuffs &amp; bracelets</button>
+        <button class="filter" type="button" data-cat="hand" aria-pressed="false">Hand chains</button>
+        <button class="filter" type="button" data-cat="earring" aria-pressed="false">Earrings</button>      </div>
+      <div class="grid" id="grid">
+        <article class="item" data-cat="necklace hand"><div class="ph"><img src="images/post8.jpg" alt="Silver choker with red stones and matching hand chain" loading="lazy"><span class="stock">In stock</span></div><h3>Afghan Choker &amp; Hand Chain Set</h3><p>Layered silver-tone choker with red stones and a matching hand chain.</p><div class="row"><span class="price">Price on request</span><a class="order" href="https://ig.me/m/orbal_jewelry_collection" target="_blank" rel="noopener">Order</a></div></article>
+        <article class="item" data-cat="earring"><div class="ph"><img src="images/earrings.jpg" alt="Silver-tone hoop earrings with a red center stone, red and green stones and tiny bells" loading="lazy"><span class="stock">In stock</span></div><h3>Afghan Hoop Earrings</h3><p>Large statement hoops with a red center stone, red and green stones and tiny bells.</p><div class="row"><span class="price">Price on request</span><a class="order" href="https://ig.me/m/orbal_jewelry_collection" target="_blank" rel="noopener">Order</a></div></article>
+        <article class="item" data-cat="necklace earring"><div class="ph"><img src="images/colorful-set.jpg" alt="Colorful Afghan choker with red, green and blue stones, coin drops and matching earrings" loading="lazy"><span class="stock">In stock</span></div><h3>Afghan Colorful Choker Set</h3><p>Choker with red, green and blue stones and coin drops, with matching earrings.</p><div class="row"><span class="price">Price on request</span><a class="order" href="https://ig.me/m/orbal_jewelry_collection" target="_blank" rel="noopener">Order</a></div></article>
+        <article class="item" data-cat="bracelet"><div class="ph"><img src="images/post12.jpg" alt="Wide gold cuff set with colorful stones" loading="lazy"><span class="stock">In stock</span></div><h3>Afghan Jeweled Cuff</h3><p>Wide gold-tone cuff with colorful stones.</p><div class="row"><span class="price">Price on request</span><a class="order" href="https://ig.me/m/orbal_jewelry_collection" target="_blank" rel="noopener">Order</a></div></article>
+        <article class="item" data-cat="bracelet"><div class="ph"><img src="images/red-stone.jpg" alt="Wide silver-tone cuff bracelet with a long red stone, next to a gold mirror" loading="lazy" style="object-position:center 40%"><span class="stock">In stock</span></div><h3>Afghan Red Stone Cuff</h3><p>Wide silver-tone cuff bracelet with a long red stone and a detailed pattern.</p><div class="row"><span class="price">Price on request</span><a class="order" href="https://ig.me/m/orbal_jewelry_collection" target="_blank" rel="noopener">Order</a></div></article>
+        <article class="item" data-cat="necklace"><div class="ph"><img src="images/post10.jpg" alt="Gold statement necklace with coin details" loading="lazy"><span class="stock">In stock</span></div><h3>Afghan Gold Statement Necklace</h3><p>Bold gold-tone necklace with coin details and a round pendant.</p><div class="row"><span class="price">Price on request</span><a class="order" href="https://ig.me/m/orbal_jewelry_collection" target="_blank" rel="noopener">Order</a></div></article>
+        <article class="item" data-cat="hand necklace"><div class="ph"><img src="images/post7.jpg" alt="Silver choker set with matching hand chain on white fabric" loading="lazy"><span class="stock">In stock</span></div><h3>Afghan Bridal Set</h3><p>Choker and hand chain with red stones. Perfect for weddings and Eid.</p><div class="row"><span class="price">Price on request</span><a class="order" href="https://ig.me/m/orbal_jewelry_collection" target="_blank" rel="noopener">Order</a></div></article>
+        <article class="item" data-cat="necklace"><div class="ph"><img src="images/post9.jpg" alt="Antique brass necklace with triangle pendants" loading="lazy"><span class="stock">In stock</span></div><h3>Afghan Triangle Necklace</h3><p>Antique-style necklace with three triangle pendants.</p><div class="row"><span class="price">Price on request</span><a class="order" href="https://ig.me/m/orbal_jewelry_collection" target="_blank" rel="noopener">Order</a></div></article>
+        <article class="item" data-cat="bracelet"><div class="ph"><img src="images/blue-cuffs.jpg" alt="Pair of wide silver-tone cuffs with blue and red stones" loading="lazy"><span class="stock">In stock</span></div><h3>Afghan Blue Stone Cuffs</h3><p>Wide silver-tone cuffs with deep blue stones and small red accents.</p><div class="row"><span class="price">Price on request</span><a class="order" href="https://ig.me/m/orbal_jewelry_collection" target="_blank" rel="noopener">Order</a></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="heritage" id="heritage">
+    <div class="wrap">
+      <div class="heritage-photos">
+        <img src="images/model-layers.jpg" alt="Model in a traditional embroidered Afghan dress wearing layered necklaces, bangles and a mirror ring" loading="lazy">
+        <img src="images/post11.jpg" alt="Hand chain worn with an embroidered Afghan dress" loading="lazy">
+      </div>
+      <div class="heritage-text">
+        <span class="label">Our heritage</span>
+        <h2>Rooted in <em>Afghan</em> tradition, made for today.</h2>
+        <p>For generations, Afghan jewelry has been worn at weddings, Eid and family celebrations. Bold silver, glowing red stones and delicate chains tell stories of family, culture and pride.</p>
+        <p>ORBAL brings these timeless pieces to you, wherever you are, so you can wear your heritage with confidence.</p>
+        <div class="values">
+          <div><b>Timeless</b><span>Designs passed down through generations</span></div>
+          <div><b>Handpicked</b><span>Every piece chosen with care</span></div>
+          <div><b>Celebrated</b><span>Made for weddings, Eid and special days</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="order">
+    <div class="wrap">
+      <div class="head">
+        <div class="orn"><span class="label">How to order</span></div>
+        <h2>Ordering is <em>easy</em></h2>
+      </div>
+      <div class="steps">
+        <div class="step"><span class="n">1</span><h3>Choose</h3><p>Browse the collection and find the piece you love.</p></div>
+        <div class="step"><span class="n">2</span><h3>Message us</h3><p>Send a DM on Instagram with a photo or the name of the piece.</p></div>
+        <div class="step"><span class="n">3</span><h3>Confirm</h3><p>We confirm availability, price and shipping to your country.</p></div>
+        <div class="step"><span class="n">4</span><h3>Receive</h3><p>Your jewelry is carefully packed and shipped to your door.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="feed">
+    <div class="wrap">
+      <div class="head">
+        <div class="orn"><span class="label">@orbal_jewelry_collection</span></div>
+        <h2>Follow us on <em>Instagram</em></h2>
+        <p>New pieces and restocks are shared on Instagram first.</p>
+      </div>
+      <div class="strip">
+        <a href="https://www.instagram.com/orbal_jewelry_collection/" target="_blank" rel="noopener"><img src="images/post8.jpg" alt="Silver necklace set on white fabric" loading="lazy"></a>
+        <a href="https://www.instagram.com/orbal_jewelry_collection/" target="_blank" rel="noopener"><img src="images/earrings-collage.jpg" alt="Close-ups of the Afghan hoop earrings" loading="lazy"></a>
+        <a href="https://www.instagram.com/orbal_jewelry_collection/" target="_blank" rel="noopener"><img src="images/post5.jpg" alt="Ruby choker on a display bust" loading="lazy"></a>
+        <a href="https://www.instagram.com/orbal_jewelry_collection/" target="_blank" rel="noopener"><img src="images/post12.jpg" alt="Jeweled cuff close-up" loading="lazy"></a>
+        <a href="https://www.instagram.com/orbal_jewelry_collection/" target="_blank" rel="noopener"><img src="images/post10.jpg" alt="Gold heritage necklace" loading="lazy"></a>
+        <a href="https://www.instagram.com/orbal_jewelry_collection/" target="_blank" rel="noopener"><img src="images/blue-cuffs-2.jpg" alt="Blue stone cuffs on a wooden chair" loading="lazy"></a>
+      </div>
+      <div class="center"><a class="btn btn-line" href="https://www.instagram.com/orbal_jewelry_collection/" target="_blank" rel="noopener">Follow @orbal_jewelry_collection</a></div>
+    </div>
+  </section>
+
+  <section class="contact">
+    <div class="wrap">
+      <div class="box">
+        <div>
+          <span class="label">Get in touch</span>
+          <h2 style="margin-top:12px">Found a piece you <em>love?</em></h2>
+          <p>Message us on Instagram and we’ll help you choose, answer your questions and arrange shipping anywhere in the world.</p>
+          <div class="actions" style="margin-top:26px"><a class="btn btn-ruby" href="https://ig.me/m/orbal_jewelry_collection" target="_blank" rel="noopener">Send us a DM</a></div>
+        </div>
+        <ul>
+          <li><i aria-hidden="true">✉</i><div><b>Instagram DM</b><span>@orbal_jewelry_collection</span></div></li>
+          <li><i aria-hidden="true">⌂</i><div><b>Based in the USA</b><span>Tracked shipping on every order</span></div></li>
+          <li><i aria-hidden="true">✈</i><div><b>Worldwide shipping</b><span>We ship to your country</span></div></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="brand" href="#top"><b>ORBAL</b></a>
+    <span>Authentic Afghan Heritage Jewelry · <span class="fa" lang="fa">اوربل</span></span>
+    <span>Website by <a href="https://nickyarweb.github.io/" target="_blank" rel="noopener" style="color:var(--gold-soft)">Nickyar Web Design</a></span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var items = document.querySelectorAll('.item');
+  document.querySelectorAll('.filter').forEach(function(b){
+    b.addEventListener('click', function(){
+      document.querySelectorAll('.filter').forEach(function(x){ x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      var c = b.dataset.cat;
+      items.forEach(function(it){ it.hidden = c !== 'all' && it.dataset.cat.split(' ').indexOf(c) === -1; });
+    });
+  });
+})();
+</script>
+</body>
+</html>
